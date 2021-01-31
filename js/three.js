@@ -12,13 +12,21 @@ document.body.appendChild( container );
 camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
 camera.position.set( 0, 400, 700 );
 
-cameraTarget = new THREE.Vector3( 0, 150, 0 );
+cameraTarget = new THREE.Vector3( 0, window.innerHeight/5, 0 );
 
 // SCENE
-
+console.log(window.innerHeight);
 scene = new THREE.Scene();
 scene.background = new THREE.Color( 0x000000 );
 scene.fog = new THREE.Fog( 0xFFFF00, 250, 1400 );
+
+// const dirLight = new THREE.DirectionalLight( 0xFFFF00, 0.125 );
+// dirLight.position.set( 0, 0, 1 ).normalize();
+// scene.add( dirLight );
+
+// const pointLight = new THREE.PointLight( 0xFFFF00, 1.5 );
+// pointLight.position.set( 0, 100, 90 );
+// scene.add( pointLight );
 
 renderer = new THREE.WebGLRenderer( { antialias: true } );
 renderer.setPixelRatio( window.devicePixelRatio );
@@ -28,17 +36,21 @@ container.appendChild( renderer.domElement );
 group = new THREE.Group();
 group.position.y = 100;
 
-let text = "HKSTM",
+let text = "H K S T M",
     bevelEnabled = true;
 
 const height = 20,
         size = 70,
         hover = 30,
-        curveSegments = 4,
-        bevelThickness = 2,
-        bevelSize = 1.5;
+        curveSegments = 10,
+        bevelThickness = 15,
+        bevelSize = 1;
 
 let targetRotation = 0;
+let targetRotationOnPointerDown = 0;
+
+let pointerX = 0;
+let pointerXOnPointerDown = 0;
 
 
 const loader = new THREE.FontLoader();
@@ -55,7 +67,7 @@ loader.load( 'fonts/optimer_bold.typeface.json', function ( font ) {
 
         bevelThickness: bevelThickness,
         bevelSize: bevelSize,
-        bevelEnabled: bevelEnabled
+        bevelEnabled: true
 
     } );
 
@@ -91,11 +103,43 @@ function onWindowResize() {
 }
 window.addEventListener( 'resize', onWindowResize );
 
+function onPointerDown( event ) {
 
+    if ( event.isPrimary === false ) return;
+
+    pointerXOnPointerDown = event.clientX - windowHalfX;
+    targetRotationOnPointerDown = targetRotation;
+
+    document.addEventListener( 'pointermove', onPointerMove );
+    document.addEventListener( 'pointerup', onPointerUp );
+
+}
+
+function onPointerMove( event ) {
+
+    if ( event.isPrimary === false ) return;
+
+    pointerX = event.clientX - windowHalfX;
+
+    targetRotation = targetRotationOnPointerDown + ( pointerX - pointerXOnPointerDown ) * 0.02;
+
+}
+
+function onPointerUp() {
+
+    if ( event.isPrimary === false ) return;
+
+    document.removeEventListener( 'pointermove', onPointerMove );
+    document.removeEventListener( 'pointerup', onPointerUp );
+
+}
+
+// container.addEventListener( 'pointerdown', onPointerDown );
 
 function animate() {
 
     requestAnimationFrame( animate );
+    targetRotation -= 0.01
     group.rotation.y += ( targetRotation - group.rotation.y ) * 0.05;
 
     camera.lookAt( cameraTarget );

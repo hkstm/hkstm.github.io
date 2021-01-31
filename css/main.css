@@ -43,6 +43,7 @@ canvas {
 
 #intro {
 	text-align: center;
+	top: 50px;
 	position: relative;
 	box-sizing: border-box;
 	text-align: center;
