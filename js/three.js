@@ -1,6 +1,8 @@
 // import * as THREE from '../node_modules/three/src/Three.js';
 import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
+THREE.Cache.enabled = true;
+
 let container;
 let camera, cameraTarget, scene, renderer;
 let group, textMesh1, textGeo, materials;
