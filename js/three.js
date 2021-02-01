@@ -1,5 +1,5 @@
-import * as THREE from './modules/three.module.js';
-// import * as THREE from 'https://unpkg.com/three@0.125.2/build/three.module.js'
+// import * as THREE from './modules/three.module.js';
+import * as THREE from 'https://unpkg.com/three@0.125.2/build/three.module.js'
 
 THREE.Cache.enabled = true;
 
