@@ -21,7 +21,7 @@ scene.background = new THREE.Color( 0x000000 );
 scene.fog = new THREE.Fog( 0xFFFF00, 250, 1000 );
 
 group = new THREE.Group();
-group.position.y = 700;
+group.position.y = 730;
 scene.add( group );
 
 let targetRotation = 0;
@@ -32,7 +32,7 @@ let text = "H K S T M",
     bevelEnabled = true;
 
 const height = 20,
-        size = 70,
+        size = 60,
         hover = 30,
         curveSegments = 10,
         bevelThickness = 1,
