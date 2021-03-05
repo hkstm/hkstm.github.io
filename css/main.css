@@ -10,7 +10,6 @@ body {
 
 a {
 	color: hsl(60, 100%, 50%);
-	text-decoration: none;
 }
 
 .typewriter h3 {
@@ -19,7 +18,6 @@ a {
 	top: 100px;
 	max-width: 50%;
 	box-sizing: border-box;
-	z-index: 1; /* TODO Solve this in HTML */
 	overflow: hidden; /* Ensures the content is not revealed until the animation */
 	border-right: .15em solid hsl(60, 100%, 50%); /* The typwriter cursor */
 	white-space: nowrap; 
@@ -30,61 +28,46 @@ a {
 	  blink-caret .75s step-end infinite;
   }
 
-  .typewriter p {
-	padding: 50px;
+.typewriter p {
 	margin: auto;
-	
-	text-align: justify;
 	top: 50px;
-	max-width: 55%;
+	padding-top: 25px;
+	max-width: 50%;
+	text-align: justify;
+	
+
 	box-sizing: border-box;
-	z-index: 1; /* TODO Solve this in HTML */
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
+}
+
+@keyframes typing {
 	from { width: 0 }
 	to { width: 100% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
+}
+
+@keyframes blink-caret {
 	from, to { border-color: transparent }
 	50% { border-color: hsl(60, 100%, 50%); }
-  }
-
-a:hover {
-	text-decoration: underline;
-}
-
-button {
-	cursor: pointer;
-	text-transform: uppercase;
-}
+	}
 
 canvas {
 	display: block;
 }
 
-#infolinks {
+.infolinks {
 	text-align: center;
 	top: 0px;
 	width: 100%;
 	padding: 20px;
 	bottom: 100px;
 	box-sizing: border-box;
+}
+
+.vertical-line{
+	width: 1px;
+	background-color: hsl(60, 100%, 50%);
+	height: 100%;
+	margin: 10px;
+	border: 1px solid white;
+	box-sizing: border-box;
 	text-align: center;
-	z-index: 1; /* TODO Solve this in HTML */
-}
-
-a, button, input, select {
-	pointer-events: auto;
-}
-
-.dg.ac {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	z-index: 2 !important; /* TODO Solve this in HTML */
-}
+  }
