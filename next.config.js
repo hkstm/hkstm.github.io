@@ -4,7 +4,6 @@ const path = require('path')
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  distDir: 'docs',  // for gh pages
   images: {
     unoptimized: true,
   },
