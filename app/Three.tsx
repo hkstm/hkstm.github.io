@@ -111,7 +111,7 @@ function initScene(ref: React.RefObject<HTMLElement>): { trackedObjects: Tracked
     function createText(text: string, bevelEnabled: boolean, height: number, size: number, hover: number, curveSegments: number, bevelThickness: number, bevelSize: number) {
         THREE.Cache.enabled = true;
         const loader = new FontLoader(THREE.DefaultLoadingManager);
-        loader.load('https://hkstm.dev/fonts/optimer_bold.typeface.json',  // probably want to change this at some point and load font directly or at least cdn
+        loader.load('https://raw.githubusercontent.com/hkstm/hkstm.github.io/main/public/resources/optimer_bold.typeface.json',  // probably want to change this at some point and load font directly or at least cdn
 // @ts-ignore
             function (font) {
                 const textGeo = new TextGeometry(text, {
