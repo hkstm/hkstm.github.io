@@ -53,7 +53,7 @@ export default function Home() {
                         University.
                         At present, based in <em>Amsterdam</em> and expecting to finish my MSc thesis on <em>performance modelling
                         of distributed graph neural network training</em> around October, 2023.
-                        If you know of any cool work opportunities, especially those dealing with Machine Learning Engineering/MLOps, feel free me to contact me!
+                        If you know of any cool work opportunities, especially those dealing with Machine Learning Engineering/MLOps, feel free to contact me!
                         <br/>
                         <br/>
                         <i>Kailhan Hokstam</i>
