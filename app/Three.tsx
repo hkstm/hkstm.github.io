@@ -95,7 +95,8 @@ function initScene(ref: React.RefObject<HTMLElement>): { trackedObjects: Tracked
     group.position.y = 1000
     scene.add(group)
 
-    let targetRotation = 0
+    const initialRotation = THREE.MathUtils.degToRad(60)
+    let targetRotation = initialRotation
 
     const text = "H K S T M",
         height = 20,
@@ -107,6 +108,7 @@ function initScene(ref: React.RefObject<HTMLElement>): { trackedObjects: Tracked
         bevelEnabled = true
 
     createText(text, bevelEnabled, height, size, hover, curveSegments, bevelThickness, bevelSize)
+    group.rotation.y = initialRotation
 
     function createText(text: string, bevelEnabled: boolean, height: number, size: number, hover: number, curveSegments: number, bevelThickness: number, bevelSize: number) {
         THREE.Cache.enabled = true;
@@ -165,7 +167,7 @@ function initScene(ref: React.RefObject<HTMLElement>): { trackedObjects: Tracked
 
     function animate() {
         requestAnimationFrame(animate);
-        targetRotation -= 0.005
+        targetRotation -= 0.0025
         group.rotation.y += (targetRotation - group.rotation.y) * 0.02;
         camera.lookAt(new THREE.Vector3(0, 1000, 0))
         renderer.clear();

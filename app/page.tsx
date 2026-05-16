@@ -43,17 +43,10 @@ export default function Home() {
                     </h3>
                 </div>
                 <br/>
+                <br/>
                 <div className={'my-8'}>
                     <p>
-                        I&apos;m currently doing a MSc in Computer Science, <em>Big Data Engineering</em> track, at the Vrije
-                        Universiteit & Universiteit van Amsterdam.
-                        I&apos;m interested in <em>Data Pipelines</em>, <em>Machine Learning/Data Mining</em> and <em>Data
-                        Visualization</em>.
-                        Previously, I obtained a BSc in <em>Data Science</em> & <em>Artificial Intelligence</em> from Maastricht
-                        University.
-                        At present, based in <em>Amsterdam</em> and expecting to finish my MSc thesis on <em>performance modelling
-                        of distributed graph neural network training</em> around October, 2023.
-                        If you know of any cool work opportunities, especially those dealing with Machine Learning Engineering/MLOps, feel free to contact me!
+                        Currently, engineering software at Adyen, but if you know of any cool work opportunities, especially those dealing with hardware/IoT/design, feel free to contact me!
                         <br/>
                         <br/>
                         <i>Kailhan Hokstam</i>
