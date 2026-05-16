@@ -24,12 +24,83 @@ canvas {
 }
 
 .socialLinks {
+  --social-icon-size: 1.15rem;
+  --social-underline-width: 1.5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   text-align: center;
   top: 0;
   width: 100%;
   padding: 20px;
   bottom: 100px;
   box-sizing: border-box;
+}
+
+.socialLink {
+  display: inline-block;
+  color: $primary-color;
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+.hasExternalIcon {
+  position: relative;
+}
+
+.hasExternalIcon > svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(var(--social-icon-size) / 2);
+  height: calc(var(--social-icon-size) / 2);
+  transform: translate(75%, 50%);
+  transition: transform 0.165s ease-out;
+}
+
+.linkAnimation {
+  --var: 0%;
+  position: relative;
+  overflow: visible;
+}
+
+.linkAnimation::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: inline-block;
+  width: var(--var);
+  height: 100%;
+  border-bottom: var(--social-underline-width) solid currentColor;
+  transform: translateY(var(--social-underline-width));
+  box-sizing: border-box;
+  z-index: 0;
+  will-change: width, border-bottom;
+  overflow: visible;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .hasExternalIcon:hover > svg {
+    transform: translate(calc(75% + 1px), calc(50% - 2px));
+  }
+
+  .linkAnimation:hover::before {
+    animation: hyperLink 0.66s ease forwards;
+  }
+}
+
+@keyframes hyperLink {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 .typewriter{

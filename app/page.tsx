@@ -1,13 +1,5 @@
-import Link from 'next/link'
 import Three from "@/app/Three";
-import {config} from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-
-config.autoAddCss = false
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import '../styles/globals.scss'
-import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
-import {faEnvelope} from '@fortawesome/free-regular-svg-icons'
 import {Chivo_Mono} from 'next/font/google'
 
 // If loading a variable font, you don't need to specify the font weight
@@ -18,18 +10,25 @@ export default function Home() {
         <div className={chivoMono.className}>
 
             <br/>
-            <div className="socialLinks">
-                <a href="https://github.com/hkstm"><u>
-                    <FontAwesomeIcon icon={faGithub} size={'xl'} title={'Email'}/>
-                </u></a>
-                &nbsp; &nbsp;
-                <a href="https://www.linkedin.com/in/hkstm"><u>
-                    <FontAwesomeIcon icon={faLinkedin} size={'xl'} title={'Email'}/>
-                </u></a>
-                &nbsp; &nbsp;
-                <a href="mailto:hello@hkstm.dev"><u>
-                    <FontAwesomeIcon icon={faEnvelope} size={'xl'} title={'Email'}/>
-                </u></a>
+            <div className="socialLinks" aria-label="Social links">
+                <a className="socialLink linkAnimation hasExternalIcon" href="https://github.com/hkstm" target="_blank" rel="noreferrer">
+                    GitHub
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12" aria-hidden="true">
+                        <path fill="currentColor" d="M11 8H9.5V3.56L5.071 7.99l-1.06-1.061L8.44 2.5H4V1h7v7Z" />
+                    </svg>
+                </a>
+                <a className="socialLink linkAnimation hasExternalIcon" href="https://www.linkedin.com/in/hkstm" target="_blank" rel="noreferrer">
+                    LinkedIn
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12" aria-hidden="true">
+                        <path fill="currentColor" d="M11 8H9.5V3.56L5.071 7.99l-1.06-1.061L8.44 2.5H4V1h7v7Z" />
+                    </svg>
+                </a>
+                <a className="socialLink linkAnimation hasExternalIcon" href="mailto:hello@hkstm.dev">
+                    hello@hkstm.dev
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12" aria-hidden="true">
+                        <path fill="currentColor" d="M11 8H9.5V3.56L5.071 7.99l-1.06-1.061L8.44 2.5H4V1h7v7Z" />
+                    </svg>
+                </a>
             </div>
 
             <div className="typewriter">
@@ -46,7 +45,7 @@ export default function Home() {
                 <br/>
                 <div className={'my-8'}>
                     <p>
-                        Currently, engineering software at Adyen, but if you know of any cool work opportunities, especially those dealing with hardware/IoT/design, feel free to contact me!
+                        Currently happily building platforms & products powered by software at Adyen, but if you know of any cool work opportunities, especially those dealing with hardware/IoT, feel free to contact me!
                         <br/>
                         <br/>
                         <i>Kailhan Hokstam</i>
