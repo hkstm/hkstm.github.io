@@ -2,13 +2,15 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Kailhan Hokstam — hkstm.dev',
-    description: 'Personal website of Kailhan Hokstam: software engineer building platforms, products, and interactive web experiences.',
+    description: 'Kailhan Hokstam\'s website: software engineer' +
+        ' shipping products and ideas.',
     alternates: {
         canonical: 'https://hkstm.dev',
     },
     openGraph: {
         title: 'Kailhan Hokstam — hkstm.dev',
-        description: 'Personal website of Kailhan Hokstam: software engineer building platforms, products, and interactive web experiences.',
+        description: 'Kailhan Hokstam\'s website: software engineer' +
+            ' shipping products and ideas.',
         url: 'https://hkstm.dev',
         siteName: 'hkstm.dev',
         type: 'website',
@@ -16,7 +18,8 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary',
         title: 'Kailhan Hokstam — hkstm.dev',
-        description: 'Personal website of Kailhan Hokstam: software engineer building platforms, products, and interactive web experiences.',
+        description: 'Kailhan Hokstam\'s website: software engineer' +
+            ' shipping products and ideas.',
     },
 }
 
