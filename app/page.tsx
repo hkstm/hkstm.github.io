@@ -38,10 +38,11 @@ export default function Home() {
                         <br/>
                         <div className="type-line-2">This page is still very much under construction</div>
                         <br/>
-                        <div className="type-line-3">Click on the links to my GitHub and LinkedIn to see some of the things I have worked on</div>
+                        <div className="type-line-3">Click on the links to my GitHub and LinkedIn to see</div>
+                        <br/>
+                        <div className="type-line-4">some of the things I have worked on.</div>
                     </h3>
                 </div>
-                <br/>
                 <br/>
                 <div className={'my-8'}>
                     <p>

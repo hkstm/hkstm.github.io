@@ -5,6 +5,7 @@ import React, {MutableRefObject, useEffect, useRef, useState} from 'react'
 import {FontLoader} from 'three/addons/loaders/FontLoader.js';
 // @ts-ignore
 import {TextGeometry} from 'three/addons/geometries/TextGeometry.js';
+import {ASCIIEffect, ASCIITexture, EffectComposer, EffectPass, RenderPass} from 'postprocessing';
 
 import * as THREE from 'three'
 
@@ -119,7 +120,7 @@ function initScene(ref: React.RefObject<HTMLElement>): { trackedObjects: Tracked
                 const textGeo = new TextGeometry(text, {
                     font: font,
                     size: size,
-                    height: height,
+                    depth: height,
                     curveSegments: curveSegments,
                     bevelThickness: bevelThickness,
                     bevelSize: bevelSize,
@@ -159,36 +160,66 @@ function initScene(ref: React.RefObject<HTMLElement>): { trackedObjects: Tracked
         }
     }
 
-    window.onresize = function () {
+    function resize() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
     }
 
+    let animationFrameId = 0;
+    let lastFrameTime = performance.now();
     function animate() {
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
+        const currentFrameTime = performance.now();
+        const delta = (currentFrameTime - lastFrameTime) / 1000;
+        lastFrameTime = currentFrameTime;
         targetRotation -= 0.0025
         group.rotation.y += (targetRotation - group.rotation.y) * 0.02;
         camera.lookAt(new THREE.Vector3(0, 1000, 0))
-        renderer.clear();
-        renderer.render(scene, camera);
+        composer.render(delta);
     }
 
     const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: false,
+        powerPreference: 'low-power',
     })
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.domElement.style.pointerEvents = 'none';
     htmlEl.appendChild(renderer.domElement)
 
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+
+    const asciiTexture = new ASCIITexture({
+        characters: ".:,'-^=*+?!|0#X%WM@",
+        font: 'Arial',
+        fontSize: 64,
+    });
+    const asciiEffect = new ASCIIEffect({
+        asciiTexture,
+        cellSize: 16,
+        color: '#FFEF00',
+        inverted: false,
+    });
+    composer.addPass(new EffectPass(camera, asciiEffect));
+    composer.setSize(window.innerWidth, window.innerHeight);
+
+    window.addEventListener('resize', resize)
     animate()
 
 
     return {
         trackedObjects: {},
         cleanup: () => {
-            // htmlEl.removeChild(renderer.domElement)
+            cancelAnimationFrame(animationFrameId)
+            window.removeEventListener('resize', resize)
+            htmlEl.removeChild(renderer.domElement)
+            composer.dispose()
+            renderer.dispose()
         }
     }
 }
